@@ -1,0 +1,247 @@
+mysql> SOURCE C:\ISTE230\HW\HW08\Lynch_HW08_script.sql
+--------------
+-- Lynch, Connor
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- ISTE 230, Fall 2024
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- HW08
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- #1
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT now()
+--------------
+
++---------------------+
+| now()               |
++---------------------+
+| 2024-12-04 12:45:26 |
++---------------------+
+1 row in set (0.00 sec)
+
+--------------
+-- #2
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT CONCAT(City, ', ', StateCode) AS Location, COUNT(*) AS Count
+FROM Publisher
+GROUP BY City, StateCode
+ORDER BY Count
+--------------
+
++-------------------+-------+
+| Location          | Count |
++-------------------+-------+
+| Rochester, MN     |     1 |
+| Hartford, CT      |     1 |
+| Boston, MA        |     1 |
+| San Francisco, CA |     1 |
+| Rochester, NY     |     2 |
+| Chicago, IL       |     3 |
+| New York, NY      |     4 |
++-------------------+-------+
+7 rows in set (0.00 sec)
+
+--------------
+-- #3
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT Title, COUNT(Rating) AS Total_Ratings, MIN(Rating) AS Low, MAX(Rating) as High, ROUND(AVG(Rating), 2) AS Average
+FROM Book LEFT JOIN BookReview USING (ISBN)
+GROUP BY ISBN
+ORDER BY Total_Ratings DESC, Average DESC
+--------------
+
++--------------------------------------------------+---------------+------+------+---------+
+| Title                                            | Total_Ratings | Low  | High | Average |
++--------------------------------------------------+---------------+------+------+---------+
+| Yes! Networking is for Bills Fans                |             3 |    5 |    8 |    6.33 |
+| The Shortest Book in the World                   |             2 |   10 |   10 |   10.00 |
+| My Love's Last Lingering Lost                    |             2 |    8 |    9 |    8.50 |
+| From Brockport to IT                             |             2 |    7 |   10 |    8.50 |
+| How to Keep your Cellular Bill Down              |             2 |    7 |    8 |    7.50 |
+| Women are From Venus ORACLE is from Beyond Pluto |             1 |   10 |   10 |   10.00 |
+| My Love's Last Longing                           |             1 |   10 |   10 |   10.00 |
+| My Lost Love's Long Last Lingering               |             1 |    9 |    9 |    9.00 |
+| How to add Class to your Programming             |             1 |    9 |    9 |    9.00 |
+| JAVA: It's more than Just a Programming Language |             1 |    9 |    9 |    9.00 |
+| How to Keep your Cable Bill Down                 |             1 |    7 |    7 |    7.00 |
+| I Lasted my Love's Last Lingering Longing        |             1 |    7 |    7 |    7.00 |
+| My Love's at Long Last Lost his Lingering        |             1 |    7 |    7 |    7.00 |
+| From Deep in the Heart of Texas to IT            |             1 |    6 |    6 |    6.00 |
+| From the Shores of Lake Erie to IT               |             1 |    4 |    4 |    4.00 |
+| ER, SOM, NF, DK/NF, SQL, JDBC, ODBC, and RELVAR  |             1 |    4 |    4 |    4.00 |
+| Calculus for Phys Ed Majors                      |             0 | NULL | NULL |    NULL |
+| The Science of Literature Searching              |             0 | NULL | NULL |    NULL |
+| Tired of wired? Infrared instead!                |             0 | NULL | NULL |    NULL |
+| Master Wireless Through The Classic Comics       |             0 | NULL | NULL |    NULL |
+| Master HTML Through The Classic Comics           |             0 | NULL | NULL |    NULL |
+| Master C++ Through The Classic Comics            |             0 | NULL | NULL |    NULL |
+| A language without Pointers? Priceless.          |             0 | NULL | NULL |    NULL |
++--------------------------------------------------+---------------+------+------+---------+
+23 rows in set (0.00 sec)
+
+--------------
+-- #4
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT Name AS 'Publisher Name', COUNT(ISBN) AS Book_Count
+FROM Publisher JOIN Book USING (PublisherID)
+GROUP BY Name
+HAVING Book_Count > 2
+ORDER BY Book_Count DESC, Name
+--------------
+
++----------------------------------+------------+
+| Publisher Name                   | Book_Count |
++----------------------------------+------------+
+| ReadEmandWeep Romance Publishing |          5 |
+| CovertoCover Publishing          |          4 |
+| EZRead Masterpiece Comics        |          3 |
++----------------------------------+------------+
+3 rows in set (0.00 sec)
+
+--------------
+-- #5
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT Title, LENGTH(Title) AS Length, SUBSTR(Title, (INSTR(LOWER(Title), 'bill') + 4)) AS After_Bill
+FROM Book
+WHERE LOWER(Title) LIKE '%bill%'
+--------------
+
++-------------------------------------+--------+------------+
+| Title                               | Length | After_Bill |
++-------------------------------------+--------+------------+
+| Yes! Networking is for Bills Fans   |     33 | s Fans     |
+| How to Keep your Cellular Bill Down |     35 |  Down      |
+| How to Keep your Cable Bill Down    |     32 |  Down      |
++-------------------------------------+--------+------------+
+3 rows in set (0.00 sec)
+
+--------------
+-- #6
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT DISTINCT Title AS 'Book Title' FROM OwnersBook
+LEFT JOIN Book USING (ISBN)
+ORDER BY title DESC
+--------------
+
++-------------------------------------------------+
+| Book Title                                      |
++-------------------------------------------------+
+| Yes! Networking is for Bills Fans               |
+| The Shortest Book in the World                  |
+| The Science of Literature Searching             |
+| My Love's Last Longing                          |
+| My Love's Last Lingering Lost                   |
+| My Love's at Long Last Lost his Lingering       |
+| My Lost Love's Long Last Lingering              |
+| I Lasted my Love's Last Lingering Longing       |
+| How to Keep your Cellular Bill Down             |
+| How to Keep your Cable Bill Down                |
+| From the Shores of Lake Erie to IT              |
+| From Deep in the Heart of Texas to IT           |
+| ER, SOM, NF, DK/NF, SQL, JDBC, ODBC, and RELVAR |
++-------------------------------------------------+
+13 rows in set (0.00 sec)
+
+--------------
+-- #7
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT OwnerID AS "Owner's ID", CONCAT(LastName, ", ", FirstName) AS "Owner's Name", MAX(Price), MIN(Price)
+FROM Owner JOIN OwnersBook USING (OwnerID)
+GROUP BY OwnerID
+ORDER BY OwnerID DESC
+--------------
+
++------------+-----------------------+------------+------------+
+| Owner's ID | Owner's Name          | MAX(Price) | MIN(Price) |
++------------+-----------------------+------------+------------+
+|         10 | Lumberworker, George  |       0.00 |       0.00 |
+|          9 | Tripplewander, Martha |      45.00 |      25.00 |
+|          8 | Rabblewok, George     |      65.00 |      65.00 |
+|          7 | Burblemonger, Mary    |      80.00 |      80.00 |
+|          6 | Ling, Wei             |     100.00 |      60.00 |
+|          5 | Francis, Scott        |      50.00 |      25.00 |
+|          4 | Corplestein, Ira      |      75.00 |      65.00 |
+|          3 | Corplestein, Leslie   |      50.00 |      50.00 |
+|          2 | Scott, Francis        |      40.00 |      40.00 |
++------------+-----------------------+------------+------------+
+9 rows in set (0.00 sec)
+
+--------------
+-- #8
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT BookCondition.Description AS 'Book Condition', Title AS 'Book Title', Price, LEFT(EvaluatorsName, 15)
+FROM Book JOIN OwnersBook USING (ISBN)
+JOIN ConditionEvaluator USING (Evaluator)
+JOIN BookCondition USING (Ranks)
+ORDER BY BookCondition.Description, Title
+--------------
+
++----------------+-------------------------------------------------+--------+--------------------------+
+| Book Condition | Book Title                                      | Price  | LEFT(EvaluatorsName, 15) |
++----------------+-------------------------------------------------+--------+--------------------------+
+| Average        | ER, SOM, NF, DK/NF, SQL, JDBC, ODBC, and RELVAR |  50.00 | Paul Vorble Pre          |
+| Average        | From Deep in the Heart of Texas to IT           |   NULL | Jamie Whitehous          |
+| Average        | From Deep in the Heart of Texas to IT           |   NULL | Robert Xavier G          |
+| Average        | From the Shores of Lake Erie to IT              |   NULL | William Whiteho          |
+| Average        | From the Shores of Lake Erie to IT              |   0.00 | Brendle Gottsch          |
+| Average        | I Lasted my Love's Last Lingering Longing       |   NULL | Jamie Whitehous          |
+| Bad            | How to Keep your Cable Bill Down                |  45.00 | Jamie Whitehous          |
+| Excellent      | How to Keep your Cellular Bill Down             |  65.00 | Phyllis Orlando          |
+| Good           | How to Keep your Cellular Bill Down             |  25.00 | Paul Vorble Pre          |
+| Good           | My Lost Love's Long Last Lingering              |  25.00 | Jamie Whitehous          |
+| Good           | My Love's at Long Last Lost his Lingering       | 100.00 | Brendle Whiteho          |
+| Good           | My Love's Last Lingering Lost                   |  80.00 | Everest Frandic          |
+| Good           | My Love's Last Longing                          |  50.00 | Gertrude Orland          |
+| Good           | Yes! Networking is for Bills Fans               |  40.00 | Gertrude Orland          |
+| Good           | Yes! Networking is for Bills Fans               |  75.00 | Phyllis Orlando          |
+| Poor           | ER, SOM, NF, DK/NF, SQL, JDBC, ODBC, and RELVAR |   NULL | Paul Vorble Pre          |
+| Poor           | How to Keep your Cellular Bill Down             |  65.00 | Gertrude Gottsc          |
+| Poor           | The Science of Literature Searching             |  60.00 | Robert Xavier G          |
+| Poor           | The Shortest Book in the World                  |  35.00 | Brendle Gottsch          |
++----------------+-------------------------------------------------+--------+--------------------------+
+19 rows in set (0.00 sec)
+
+mysql> NOTEE

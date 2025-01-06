@@ -1,0 +1,149 @@
+-- Lynch, Connor
+-- PE03
+-- ISTE230, Fall 2024
+
+mysql> SOURCE C:\ISTE230\PE\PE03\PE03_script.sql
+--------------
+DROP DATABASE IF EXISTS PE03
+--------------
+
+Query OK, 1 row affected (0.01 sec)
+
+--------------
+CREATE DATABASE PE03
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+--------------
+CREATE TABLE automobile(
+	make	varchar(15) NOT NULL,
+	model	varchar(15) NOT NULL,
+	year	char(4) NOT NULL,
+	color	varchar(15) NOT NULL,
+	style	varchar(15) NOT NULL,
+	MSRP	DECIMAL(7,2) NOT NULL,
+	VIN	INT(4) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT PRIMARY KEY
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+--------------
+
+Query OK, 0 rows affected, 3 warnings (0.01 sec)
+
+--------------
+INSERT INTO automobile
+	VALUES('Chevy', 'Volt', '2017', 'White', 'Hybrid', 39290.99, 0001)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO automobile
+	VALUES('Ford', 'Mustang', '2019', 'Blue', 'Convertible', 47900.99, 0002)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO automobile
+	VALUES('Toyota', 'Prius', '2018', 'Silver', 'Hybrid', 25000.99, 0003)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO automobile
+	VALUES('Toyota', 'Camry', '2008', 'Blue', 'Sedan', 2000.50, 0004)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO automobile
+	VALUES('Dodge', '1500', '2007', 'Green', 'Pickup', 1799.99, 0005)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+SELECT * FROM automobile
+--------------
+
++--------+---------+------+--------+-------------+----------+------+
+| make   | model   | year | color  | style       | MSRP     | VIN  |
++--------+---------+------+--------+-------------+----------+------+
+| Chevy  | Volt    | 2017 | White  | Hybrid      | 39290.99 | 0001 |
+| Ford   | Mustang | 2019 | Blue   | Convertible | 47900.99 | 0002 |
+| Toyota | Prius   | 2018 | Silver | Hybrid      | 25000.99 | 0003 |
+| Toyota | Camry   | 2008 | Blue   | Sedan       |  2000.50 | 0004 |
+| Dodge  | 1500    | 2007 | Green  | Pickup      |  1799.99 | 0005 |
++--------+---------+------+--------+-------------+----------+------+
+5 rows in set (0.00 sec)
+
+--------------
+SELECT * FROM automobile
+--------------
+
+*************************** 1. row ***************************
+ make: Chevy
+model: Volt
+ year: 2017
+color: White
+style: Hybrid
+ MSRP: 39290.99
+  VIN: 0001
+*************************** 2. row ***************************
+ make: Ford
+model: Mustang
+ year: 2019
+color: Blue
+style: Convertible
+ MSRP: 47900.99
+  VIN: 0002
+*************************** 3. row ***************************
+ make: Toyota
+model: Prius
+ year: 2018
+color: Silver
+style: Hybrid
+ MSRP: 25000.99
+  VIN: 0003
+*************************** 4. row ***************************
+ make: Toyota
+model: Camry
+ year: 2008
+color: Blue
+style: Sedan
+ MSRP: 2000.50
+  VIN: 0004
+*************************** 5. row ***************************
+ make: Dodge
+model: 1500
+ year: 2007
+color: Green
+style: Pickup
+ MSRP: 1799.99
+  VIN: 0005
+5 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+--------------
+DESCRIBE automobile
+--------------
+
++-------+--------------------------+------+-----+---------+----------------+
+| Field | Type                     | Null | Key | Default | Extra          |
++-------+--------------------------+------+-----+---------+----------------+
+| make  | varchar(15)              | NO   |     | NULL    |                |
+| model | varchar(15)              | NO   |     | NULL    |                |
+| year  | char(4)                  | NO   |     | NULL    |                |
+| color | varchar(15)              | NO   |     | NULL    |                |
+| style | varchar(15)              | NO   |     | NULL    |                |
+| MSRP  | decimal(7,2)             | NO   |     | NULL    |                |
+| VIN   | int(4) unsigned zerofill | NO   | PRI | NULL    | auto_increment |
++-------+--------------------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> NOTEE

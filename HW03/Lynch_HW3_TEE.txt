@@ -1,0 +1,537 @@
+-- Lynch, Connor
+-- ISTE230, Fall 2024
+
+
+mysql> SOURCE C:\ISTE230\HW\HW03\Lynch_HW3p1.sql
+--------------
+-- Lynch, Connor
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- ISTE230, Fall 2024
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Q1
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT now()
+--------------
+
++---------------------+
+| now()               |
++---------------------+
+| 2024-09-18 13:05:07 |
++---------------------+
+1 row in set (0.00 sec)
+
+--------------
+-- Q2
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT headOfState
+	FROM country
+	WHERE code = 'USA'
+--------------
+
++-----------------+
+| headOfState     |
++-----------------+
+| Donald J. Trump |
++-----------------+
+1 row in set (0.00 sec)
+
+--------------
+	
+-- Q3
+UPDATE country
+	SET headOfState = 'Joseph R. Biden Jr.'
+	WHERE code = 'USA'
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+SELECT headOfState
+	FROM country
+	WHERE code = 'USA'
+--------------
+
++---------------------+
+| headOfState         |
++---------------------+
+| Joseph R. Biden Jr. |
++---------------------+
+1 row in set (0.00 sec)
+
+--------------
+	
+-- Q4
+SELECT name
+	FROM country
+	WHERE indepYear IS NULL
+--------------
+
++----------------------------------------------+
+| name                                         |
++----------------------------------------------+
+| Aruba                                        |
+| Anguilla                                     |
+| Netherlands Antilles                         |
+| American Samoa                               |
+| Antarctica                                   |
+| French Southern territories                  |
+| Bermuda                                      |
+| Bouvet Island                                |
+| Cocos (Keeling) Islands                      |
+| Cook Islands                                 |
+| Christmas Island                             |
+| Cayman Islands                               |
+| Western Sahara                               |
+| Falkland Islands                             |
+| Faroe Islands                                |
+| Gibraltar                                    |
+| Guadeloupe                                   |
+| Greenland                                    |
+| French Guiana                                |
+| Guam                                         |
+| Hong Kong                                    |
+| Heard Island and McDonald Islands            |
+| British Indian Ocean Territory               |
+| Macao                                        |
+| Northern Mariana Islands                     |
+| Montserrat                                   |
+| Martinique                                   |
+| Mayotte                                      |
+| New Caledonia                                |
+| Norfolk Island                               |
+| Niue                                         |
+| Pitcairn                                     |
+| Puerto Rico                                  |
+| Palestine                                    |
+| French Polynesia                             |
+| RÈunion                                      |
+| South Georgia and the South Sandwich Islands |
+| Saint Helena                                 |
+| Svalbard and Jan Mayen                       |
+| Saint Pierre and Miquelon                    |
+| Turks and Caicos Islands                     |
+| Tokelau                                      |
+| East Timor                                   |
+| United States Minor Outlying Islands         |
+| Virgin Islands, British                      |
+| Virgin Islands, U.S.                         |
+| Wallis and Futuna                            |
++----------------------------------------------+
+47 rows in set (0.00 sec)
+
+--------------
+	
+-- Q5
+SELECT name, continent
+	FROM country
+	WHERE population > 1000000000
+	AND lifeExpectancy >= 70
+	AND lifeExpectancy <= 80
+--------------
+
++-------+-----------+
+| name  | continent |
++-------+-----------+
+| China | Asia      |
++-------+-----------+
+1 row in set (0.00 sec)
+
+--------------
+	
+-- Q6
+SELECT name
+	FROM country
+	WHERE continent = 'North America'
+	OR continent = 'South America'
+--------------
+
++----------------------------------+
+| name                             |
++----------------------------------+
+| Aruba                            |
+| Anguilla                         |
+| Netherlands Antilles             |
+| Argentina                        |
+| Antigua and Barbuda              |
+| Bahamas                          |
+| Belize                           |
+| Bermuda                          |
+| Bolivia                          |
+| Brazil                           |
+| Barbados                         |
+| Canada                           |
+| Chile                            |
+| Colombia                         |
+| Costa Rica                       |
+| Cuba                             |
+| Cayman Islands                   |
+| Dominica                         |
+| Dominican Republic               |
+| Ecuador                          |
+| Falkland Islands                 |
+| Guadeloupe                       |
+| Grenada                          |
+| Greenland                        |
+| Guatemala                        |
+| French Guiana                    |
+| Guyana                           |
+| Honduras                         |
+| Haiti                            |
+| Jamaica                          |
+| Saint Kitts and Nevis            |
+| Saint Lucia                      |
+| Mexico                           |
+| Montserrat                       |
+| Martinique                       |
+| Nicaragua                        |
+| Panama                           |
+| Peru                             |
+| Puerto Rico                      |
+| Paraguay                         |
+| El Salvador                      |
+| Saint Pierre and Miquelon        |
+| Suriname                         |
+| Turks and Caicos Islands         |
+| Trinidad and Tobago              |
+| Uruguay                          |
+| United States                    |
+| Saint Vincent and the Grenadines |
+| Venezuela                        |
+| Virgin Islands, British          |
+| Virgin Islands, U.S.             |
++----------------------------------+
+51 rows in set (0.00 sec)
+
+--------------
+	
+-- Q7
+SELECT name, lifeExpectancy
+	FROM country
+	WHERE lifeExpectancy < 46
+	ORDER BY lifeExpectancy DESC
+--------------
+
++--------------------------+----------------+
+| name                     | lifeExpectancy |
++--------------------------+----------------+
+| Afghanistan              |           45.9 |
+| Guinea                   |           45.6 |
+| Sierra Leone             |           45.3 |
+| CÙte díIvoire            |           45.2 |
+| Ethiopia                 |           45.2 |
+| Central African Republic |           44.0 |
+| Uganda                   |           42.9 |
+| Namibia                  |           42.5 |
+| Niger                    |           41.3 |
+| Swaziland                |           40.4 |
+| Botswana                 |           39.3 |
+| Rwanda                   |           39.3 |
+| Angola                   |           38.3 |
+| Zimbabwe                 |           37.8 |
+| Malawi                   |           37.6 |
+| Mozambique               |           37.5 |
+| Zambia                   |           37.2 |
++--------------------------+----------------+
+17 rows in set (0.00 sec)
+
+mysql> SOURCE C:\ISTE230\HW\HW03\Lynch_HW3p2.sql
+--------------
+-- Lynch, Connor
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- ISTE230, Fall 2024
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+# Date updated:  07/10/2020
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Drops the conman database if it exists
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+DROP DATABASE IF EXISTS conman
+--------------
+
+Query OK, 1 row affected (0.02 sec)
+
+--------------
+CREATE DATABASE conman
+--------------
+
+Query OK, 1 row affected (0.01 sec)
+
+Database changed
+--------------
+-- Creates the contactInfo table
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+/* Since the database is dropped if it exists,
+   there is no reason to drop the table */
+CREATE TABLE contactInfo(
+contactID int                   Comment "This will be the Primary Key",
+firstName varchar(15),
+middleInitial char(1),
+lastName varchar(25),
+email varchar(40),
+url varchar(55),
+birthday date,
+notes varchar(255),
+CONSTRAINT contact_info_pk PRIMARY KEY(contactID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+--------------
+
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+--------------
+-- Updated 07/10/2020
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Inserts record into contactInfo
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Please notice not every attribute/field listed has a value
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Qty of attribute names is 8
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Qty of values is 7
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+INSERT INTO contactInfo
+(contactID,
+firstName,
+middleInitial,
+lastName,
+email,
+url,
+birthday,
+notes)
+VALUES
+(1,
+'David',
+'C',
+'Munson',
+'munson@rit.edu',
+'http://www.rit.edu/president',
+NULL,
+'Started as President of RIT on July 1, 2017.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+-- T1
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+INSERT INTO contactInfo (contactID, firstName, middleInitial, lastName, email, birthday, notes)
+	VALUES (2, 'Connor', 'P', 'Lynch', 'clynch113@gmail.com', '2004-01-13', 'Student')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO contactInfo
+	VALUES (3, 'Eli', 'T', 'Wallowby', 'etwallowby@concor.com', 'www.concor.com/~wallowby', '1956-03-26', 'All meetings must be scheduled through his assistant.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO contactInfo (contactID, firstName, middleInitial, lastName, email, birthday, notes)
+	VALUES (4, 'Eve', 'C', 'Sampson', 'esampson@concor.com', '1972-05-11', 'Very helpful.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO contactInfo (contactID, firstName, middleInitial, lastName, email, birthday, notes)
+	VALUES (5, 'Carson', 'B', 'Campbell', 'cbc232@mvch.org', '1955-01-05', 'Wife: Lisa Kids: Lucas, Lucy, and Lucinda.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+SELECT * FROM contactInfo
+--------------
+
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+
+| contactID | firstName | middleInitial | lastName | email                 | url                          | birthday   | notes                                                 |
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+
+|         1 | David     | C             | Munson   | munson@rit.edu        | http://www.rit.edu/president | NULL       | Started as President of RIT on July 1, 2017.          |
+|         2 | Connor    | P             | Lynch    | clynch113@gmail.com   | NULL                         | 2004-01-13 | Student                                               |
+|         3 | Eli       | T             | Wallowby | etwallowby@concor.com | www.concor.com/~wallowby     | 1956-03-26 | All meetings must be scheduled through his assistant. |
+|         4 | Eve       | C             | Sampson  | esampson@concor.com   | NULL                         | 1972-05-11 | Very helpful.                                         |
+|         5 | Carson    | B             | Campbell | cbc232@mvch.org       | NULL                         | 1955-01-05 | Wife: Lisa Kids: Lucas, Lucy, and Lucinda.            |
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+
+5 rows in set (0.00 sec)
+
+--------------
+-- T2
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+ALTER TABLE contactInfo ADD COLUMN nickname varchar(20) DEFAULT 'To Be Determined'
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+--------------
+SELECT * FROM contactInfo
+--------------
+
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+------------------+
+| contactID | firstName | middleInitial | lastName | email                 | url                          | birthday   | notes                                                 | nickname         |
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+------------------+
+|         1 | David     | C             | Munson   | munson@rit.edu        | http://www.rit.edu/president | NULL       | Started as President of RIT on July 1, 2017.          | To Be Determined |
+|         2 | Connor    | P             | Lynch    | clynch113@gmail.com   | NULL                         | 2004-01-13 | Student                                               | To Be Determined |
+|         3 | Eli       | T             | Wallowby | etwallowby@concor.com | www.concor.com/~wallowby     | 1956-03-26 | All meetings must be scheduled through his assistant. | To Be Determined |
+|         4 | Eve       | C             | Sampson  | esampson@concor.com   | NULL                         | 1972-05-11 | Very helpful.                                         | To Be Determined |
+|         5 | Carson    | B             | Campbell | cbc232@mvch.org       | NULL                         | 1955-01-05 | Wife: Lisa Kids: Lucas, Lucy, and Lucinda.            | To Be Determined |
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+------------------+
+5 rows in set (0.00 sec)
+
+--------------
+-- T3
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+ALTER TABLE contactInfo DROP PRIMARY KEY
+--------------
+
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+--------------
+ALTER TABLE contactInfo ADD PRIMARY KEY (contactID, firstName, lastName)
+--------------
+
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+--------------
+DESC contactInfo
+--------------
+
++---------------+--------------+------+-----+------------------+-------+
+| Field         | Type         | Null | Key | Default          | Extra |
++---------------+--------------+------+-----+------------------+-------+
+| contactID     | int          | NO   | PRI | NULL             |       |
+| firstName     | varchar(15)  | NO   | PRI | NULL             |       |
+| middleInitial | char(1)      | YES  |     | NULL             |       |
+| lastName      | varchar(25)  | NO   | PRI | NULL             |       |
+| email         | varchar(40)  | YES  |     | NULL             |       |
+| url           | varchar(55)  | YES  |     | NULL             |       |
+| birthday      | date         | YES  |     | NULL             |       |
+| notes         | varchar(255) | YES  |     | NULL             |       |
+| nickname      | varchar(20)  | YES  |     | To Be Determined |       |
++---------------+--------------+------+-----+------------------+-------+
+9 rows in set (0.00 sec)
+
+--------------
+-- T4
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+UPDATE contactInfo SET nickname = 'Dave'
+	WHERE contactID = 1
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+--------------
+SELECT * FROM contactInfo
+--------------
+
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+------------------+
+| contactID | firstName | middleInitial | lastName | email                 | url                          | birthday   | notes                                                 | nickname         |
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+------------------+
+|         1 | David     | C             | Munson   | munson@rit.edu        | http://www.rit.edu/president | NULL       | Started as President of RIT on July 1, 2017.          | Dave             |
+|         2 | Connor    | P             | Lynch    | clynch113@gmail.com   | NULL                         | 2004-01-13 | Student                                               | To Be Determined |
+|         3 | Eli       | T             | Wallowby | etwallowby@concor.com | www.concor.com/~wallowby     | 1956-03-26 | All meetings must be scheduled through his assistant. | To Be Determined |
+|         4 | Eve       | C             | Sampson  | esampson@concor.com   | NULL                         | 1972-05-11 | Very helpful.                                         | To Be Determined |
+|         5 | Carson    | B             | Campbell | cbc232@mvch.org       | NULL                         | 1955-01-05 | Wife: Lisa Kids: Lucas, Lucy, and Lucinda.            | To Be Determined |
++-----------+-----------+---------------+----------+-----------------------+------------------------------+------------+-------------------------------------------------------+------------------+
+5 rows in set (0.00 sec)
+
+--------------
+	
+-- T5
+DELETE FROM contactInfo
+	WHERE URL = 'www.concor.com/~wallowby'
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+SELECT * FROM contactInfo
+--------------
+
++-----------+-----------+---------------+----------+---------------------+------------------------------+------------+----------------------------------------------+------------------+
+| contactID | firstName | middleInitial | lastName | email               | url                          | birthday   | notes                                        | nickname         |
++-----------+-----------+---------------+----------+---------------------+------------------------------+------------+----------------------------------------------+------------------+
+|         1 | David     | C             | Munson   | munson@rit.edu      | http://www.rit.edu/president | NULL       | Started as President of RIT on July 1, 2017. | Dave             |
+|         2 | Connor    | P             | Lynch    | clynch113@gmail.com | NULL                         | 2004-01-13 | Student                                      | To Be Determined |
+|         4 | Eve       | C             | Sampson  | esampson@concor.com | NULL                         | 1972-05-11 | Very helpful.                                | To Be Determined |
+|         5 | Carson    | B             | Campbell | cbc232@mvch.org     | NULL                         | 1955-01-05 | Wife: Lisa Kids: Lucas, Lucy, and Lucinda.   | To Be Determined |
++-----------+-----------+---------------+----------+---------------------+------------------------------+------------+----------------------------------------------+------------------+
+4 rows in set (0.00 sec)
+
+mysql> NOTEE

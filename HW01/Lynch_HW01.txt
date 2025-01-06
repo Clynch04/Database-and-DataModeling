@@ -1,0 +1,344 @@
+--Lynch, Connor
+--ISTE230, Fall 2024
+
+mysql> USE college;
+Database changed
+mysql> select now();
+--------------
+select now()
+--------------
+
++---------------------+
+| now()               |
++---------------------+
+| 2024-09-04 11:52:38 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW VARIABLES LIKE "VERSION";
+--------------
+SHOW VARIABLES LIKE "VERSION"
+--------------
+
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| version       | 8.4.2 |
++---------------+-------+
+1 row in set (0.01 sec)
+
+mysql> SHOW DATABASES;
+--------------
+SHOW DATABASES
+--------------
+
++--------------------+
+| Database           |
++--------------------+
+| college            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| studentdb          |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT current_date;
+--------------
+SELECT current_date
+--------------
+
++--------------+
+| current_date |
++--------------+
+| 2024-09-04   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT current_time;
+--------------
+SELECT current_time
+--------------
+
++--------------+
+| current_time |
++--------------+
+| 11:53:28     |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT current_timestamp;
+--------------
+SELECT current_timestamp
+--------------
+
++---------------------+
+| current_timestamp   |
++---------------------+
+| 2024-09-04 11:53:40 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT current_user;
+--------------
+SELECT current_user
+--------------
+
++----------------+
+| current_user   |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT pi();
+--------------
+SELECT pi()
+--------------
+
++----------+
+| pi()     |
++----------+
+| 3.141593 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT user();
+--------------
+SELECT user()
+--------------
+
++----------------+
+| user()         |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM student\G
+--------------
+SELECT * FROM student
+--------------
+
+*************************** 1. row ***************************
+     studentID: 120050789
+      lastName: Floeser
+     firstName: Michael
+   homeAddress: 2 Main, Honeoy,Falls NY
+collegeAddress: Brigs Hall Apt 503
+     advisorID: 012345678
+  departmentID: 4002
+     graduated: 0
+*************************** 2. row ***************************
+     studentID: 121212121
+      lastName: Habermas
+     firstName: Jim
+   homeAddress: 32 Main, Plymouth, MI
+collegeAddress: Haffey Hall Apt 503
+     advisorID: 234567890
+  departmentID: 4003
+     graduated: 1
+*************************** 3. row ***************************
+     studentID: 123123123
+      lastName: Burns
+     firstName: Jeff
+   homeAddress: 8015 Arlington, Plymouth, MI
+collegeAddress: Haffey Hall Apt 503
+     advisorID: 345678901
+  departmentID: 500
+     graduated: 1
+*************************** 4. row ***************************
+     studentID: 133333330
+      lastName: Miller
+     firstName: Guy
+   homeAddress: 32 Oak St., Plymouth, MI
+collegeAddress: Haffey Hall Apt 503
+     advisorID: 345678901
+  departmentID: 500
+     graduated: 1
+*************************** 5. row ***************************
+     studentID: 233333333
+      lastName: French
+     firstName: Bryan
+   homeAddress: 3243 Main, Avon, NY
+collegeAddress: Haffey Hall Apt 503
+     advisorID: 345678901
+  departmentID: 500
+     graduated: 1
+*************************** 6. row ***************************
+     studentID: 987220220
+      lastName: Habermas
+     firstName: Kim
+   homeAddress: 2222 South Main, Plymout, MI
+collegeAddress: Haffey Hall Apt 999
+     advisorID: 012345678
+  departmentID: 4002
+     graduated: 0
+*************************** 7. row ***************************
+     studentID: 987654321
+      lastName: Wilcox
+     firstName: Dawn
+   homeAddress: 888 East Brook Ave.
+collegeAddress: UNknown
+     advisorID: 012345678
+  departmentID: 2000
+     graduated: 0
+*************************** 8. row ***************************
+     studentID: 987659009
+      lastName: Smith
+     firstName: Dawn
+   homeAddress: 202 South St., Rochester, NY
+collegeAddress: Haffey Hall Apt 301
+     advisorID: 012345678
+  departmentID: 2000
+     graduated: 0
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM student;
+--------------
+SELECT * FROM student
+--------------
+
++-----------+----------+-----------+------------------------------+---------------------+-----------+--------------+-----------+
+| studentID | lastName | firstName | homeAddress                  | collegeAddress      | advisorID | departmentID | graduated |
++-----------+----------+-----------+------------------------------+---------------------+-----------+--------------+-----------+
+| 120050789 | Floeser  | Michael   | 2 Main, Honeoy,Falls NY      | Brigs Hall Apt 503  | 012345678 | 4002         |         0 |
+| 121212121 | Habermas | Jim       | 32 Main, Plymouth, MI        | Haffey Hall Apt 503 | 234567890 | 4003         |         1 |
+| 123123123 | Burns    | Jeff      | 8015 Arlington, Plymouth, MI | Haffey Hall Apt 503 | 345678901 | 500          |         1 |
+| 133333330 | Miller   | Guy       | 32 Oak St., Plymouth, MI     | Haffey Hall Apt 503 | 345678901 | 500          |         1 |
+| 233333333 | French   | Bryan     | 3243 Main, Avon, NY          | Haffey Hall Apt 503 | 345678901 | 500          |         1 |
+| 987220220 | Habermas | Kim       | 2222 South Main, Plymout, MI | Haffey Hall Apt 999 | 012345678 | 4002         |         0 |
+| 987654321 | Wilcox   | Dawn      | 888 East Brook Ave.          | UNknown             | 012345678 | 2000         |         0 |
+| 987659009 | Smith    | Dawn      | 202 South St., Rochester, NY | Haffey Hall Apt 301 | 012345678 | 2000         |         0 |
++-----------+----------+-----------+------------------------------+---------------------+-----------+--------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+    -> VALUES ("222222222","Hass","Jack","Watson Hall, RIT","012345678","4002",0);
+--------------
+INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+VALUES ("222222222","Hass","Jack","Watson Hall, RIT","012345678","4002",0)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+    -> VALUES ("333333333","Hancock","John","Watson Hall, RIT","012345678","4002",0);
+--------------
+INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+VALUES ("333333333","Hancock","John","Watson Hall, RIT","012345678","4002",0)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+    -> VALUES ("444444444","Hanks","Tom","Watson Hall, RIT","012345678","4002",0);
+--------------
+INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+VALUES ("444444444","Hanks","Tom","Watson Hall, RIT","012345678","4002",0)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+    -> VALUES ("555555555","Holland","Sam","Watson Hall, RIT","012345678","4002",0);
+--------------
+INSERT INTO student (studentID, lastName, firstName, collegeAddress,advisorID, departmentID, graduated)
+VALUES ("555555555","Holland","Sam","Watson Hall, RIT","012345678","4002",0)
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT studentID, lastName, firstName, collegeAddress, advisorID, departmentID
+    -> FROM student
+    -> ORDER BY lastname, firstname;
+--------------
+SELECT studentID, lastName, firstName, collegeAddress, advisorID, departmentID
+FROM student
+ORDER BY lastname, firstname
+--------------
+
++-----------+----------+-----------+---------------------+-----------+--------------+
+| studentID | lastName | firstName | collegeAddress      | advisorID | departmentID |
++-----------+----------+-----------+---------------------+-----------+--------------+
+| 123123123 | Burns    | Jeff      | Haffey Hall Apt 503 | 345678901 | 500          |
+| 120050789 | Floeser  | Michael   | Brigs Hall Apt 503  | 012345678 | 4002         |
+| 233333333 | French   | Bryan     | Haffey Hall Apt 503 | 345678901 | 500          |
+| 121212121 | Habermas | Jim       | Haffey Hall Apt 503 | 234567890 | 4003         |
+| 987220220 | Habermas | Kim       | Haffey Hall Apt 999 | 012345678 | 4002         |
+| 333333333 | Hancock  | John      | Watson Hall, RIT    | 012345678 | 4002         |
+| 444444444 | Hanks    | Tom       | Watson Hall, RIT    | 012345678 | 4002         |
+| 222222222 | Hass     | Jack      | Watson Hall, RIT    | 012345678 | 4002         |
+| 555555555 | Holland  | Sam       | Watson Hall, RIT    | 012345678 | 4002         |
+| 133333330 | Miller   | Guy       | Haffey Hall Apt 503 | 345678901 | 500          |
+| 987659009 | Smith    | Dawn      | Haffey Hall Apt 301 | 012345678 | 2000         |
+| 987654321 | Wilcox   | Dawn      | UNknown             | 012345678 | 2000         |
++-----------+----------+-----------+---------------------+-----------+--------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT lastName, firstName, collegeAddress, homeAddress FROM student;
+--------------
+SELECT lastName, firstName, collegeAddress, homeAddress FROM student
+--------------
+
++----------+-----------+---------------------+------------------------------+
+| lastName | firstName | collegeAddress      | homeAddress                  |
++----------+-----------+---------------------+------------------------------+
+| Floeser  | Michael   | Brigs Hall Apt 503  | 2 Main, Honeoy,Falls NY      |
+| Habermas | Jim       | Haffey Hall Apt 503 | 32 Main, Plymouth, MI        |
+| Burns    | Jeff      | Haffey Hall Apt 503 | 8015 Arlington, Plymouth, MI |
+| Miller   | Guy       | Haffey Hall Apt 503 | 32 Oak St., Plymouth, MI     |
+| Hass     | Jack      | Watson Hall, RIT    | NULL                         |
+| French   | Bryan     | Haffey Hall Apt 503 | 3243 Main, Avon, NY          |
+| Hancock  | John      | Watson Hall, RIT    | NULL                         |
+| Hanks    | Tom       | Watson Hall, RIT    | NULL                         |
+| Holland  | Sam       | Watson Hall, RIT    | NULL                         |
+| Habermas | Kim       | Haffey Hall Apt 999 | 2222 South Main, Plymout, MI |
+| Wilcox   | Dawn      | UNknown             | 888 East Brook Ave.          |
+| Smith    | Dawn      | Haffey Hall Apt 301 | 202 South St., Rochester, NY |
++----------+-----------+---------------------+------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT concat(lastName, ", ", firstName) AS "Student_Name" FROM student
+    -> ORDER BY Student_Name;
+--------------
+SELECT concat(lastName, ", ", firstName) AS "Student_Name" FROM student
+ORDER BY Student_Name
+--------------
+
++------------------+
+| Student_Name     |
++------------------+
+| Burns, Jeff      |
+| Floeser, Michael |
+| French, Bryan    |
+| Habermas, Jim    |
+| Habermas, Kim    |
+| Hancock, John    |
+| Hanks, Tom       |
+| Hass, Jack       |
+| Holland, Sam     |
+| Miller, Guy      |
+| Smith, Dawn      |
+| Wilcox, Dawn     |
++------------------+
+12 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
+--------------
+SHOW TABLES
+--------------
+
++-------------------+
+| Tables_in_college |
++-------------------+
+| advisor           |
+| departments       |
+| otherdeptfac      |
+| student           |
+| ta                |
++-------------------+
+5 rows in set (0.00 sec)
+
+mysql> NOTEE

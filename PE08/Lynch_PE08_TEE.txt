@@ -1,0 +1,162 @@
+mysql> SOURCE C:\ISTE230\PE\PE08\Lynch_PE08_script.sql
+--------------
+-- Lynch, Connor
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- ISTE230, Fall 2024
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- PE08
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- #1
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT name AS 'Recipe Name' FROM recipe
+	WHERE source = 'Mom'
+--------------
+
++--------------------+
+| Recipe Name        |
++--------------------+
+| Linguine Pescadoro |
+| Zuppa Inglese      |
++--------------------+
+2 rows in set (0.00 sec)
+
+--------------
+-- #2
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT recipe.name FROM recipe
+	JOIN nutrition USING (recipeID)
+	WHERE unit = 'calories'
+	AND quantity <= 800
+--------------
+
++----------------------+
+| name                 |
++----------------------+
+| Linguine Pescadoro   |
+| Zuppa Inglese        |
+| Crispy Fried Chicken |
++----------------------+
+3 rows in set (0.00 sec)
+
+--------------
+-- #3
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT ingredients.name AS 'Ingredient Name', quantity FROM recipe
+	JOIN ingredientlist USING (recipeID)
+	JOIN ingredients USING (IngredientID)
+	WHERE recipe.name LIKE 'Beef Parmesan%'
+	ORDER BY ingredients.name DESC
+--------------
+
++------------------------------------+----------+
+| Ingredient Name                    | quantity |
++------------------------------------+----------+
+| spaghetti sauce                    |        1 |
+| shredded mozzarella cheese         |      0.5 |
+| onion, sliced into thin rings      |        1 |
+| olive oil                          |    0.125 |
+| Italian seasoned bread crumbs      |        1 |
+| green bell pepper, sliced in rings |        1 |
+| grated Parmesan cheese             |      0.5 |
+| garlic                             |        1 |
+| butter                             |    0.125 |
+| beef cube steak                    |      1.5 |
+| angel hair pasta                   |        1 |
++------------------------------------+----------+
+11 rows in set (0.00 sec)
+
+--------------
+-- #4
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT DISTINCT recipe.name FROM recipe WHERE recipeID NOT IN
+	(SELECT recipeID FROM ingredientlist JOIN recipe USING (recipeID)
+	WHERE ingredientID NOT IN
+		(SELECT ingredientID FROM ingredients JOIN ingredientlist USING (ingredientID)
+		WHERE type NOT IN ('beef', 'pork', 'chicken', 'lamb')
+		)
+	)
+	ORDER BY recipe.name DESC
+--------------
+
++--------------------+
+| name               |
++--------------------+
+| Zuppa Inglese      |
+| Lobster Thermadore |
+| Linguine Pescadoro |
++--------------------+
+3 rows in set (0.00 sec)
+
+--------------
+	
+-- #5
+SELECT DISTINCT recipe.name AS Recipe_Name, nutrition.quantity AS QTY, nutrition.name FROM recipe
+	JOIN nutrition USING (recipeID)
+	WHERE nutrition.name = 'calories'
+	AND nutrition.quantity <= 1200
+	AND recipe.recipeID IN
+	(SELECT recipeID FROM ingredientlist JOIN recipe USING (recipeID)
+	WHERE ingredientID NOT IN
+		(SELECT ingredientID FROM ingredients JOIN ingredientlist USING (ingredientID)
+		WHERE type NOT IN ('beef', 'chicken')
+		)
+	)
+--------------
+
++--------------------------------------------+------+----------+
+| Recipe_Name                                | QTY  | name     |
++--------------------------------------------+------+----------+
+| Beef Parmesan with Garlic Angel Hair Pasta | 1167 | calories |
+| Crispy Fried Chicken                       |  750 | calories |
++--------------------------------------------+------+----------+
+2 rows in set (0.00 sec)
+
+--------------
+	
+-- #6
+SELECT DISTINCT recipe.name AS Recipe_Name, nutrition.quantity AS QTY, nutrition.name AS Nutrition_Name FROM recipe
+	JOIN nutrition USING (recipeID)
+	WHERE (recipe.name LIKE 'A%' OR recipe.name LIKE 'B%' OR recipe.name LIKE 'C%')
+	AND nutrition.name = 'calories'
+	ORDER BY recipe.name
+--------------
+
++--------------------------------------------+------+----------------+
+| Recipe_Name                                | QTY  | Nutrition_Name |
++--------------------------------------------+------+----------------+
+| Aged Prime Rib                             | 3000 | calories       |
+| Beef Parmesan with Garlic Angel Hair Pasta | 1167 | calories       |
+| Crispy Fried Chicken                       |  750 | calories       |
+| Crock Pot - Pot Roast                      | 3500 | calories       |
++--------------------------------------------+------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> NOTEE

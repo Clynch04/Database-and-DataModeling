@@ -1,0 +1,403 @@
+-- Lynch, Connor
+-- ISTE230, Fall 2024
+-- PE04
+
+mysql> SOURCE C:\ISTE230\PE\PE04\Lynch_PE04_script.sql
+--------------
+-- Lynch, Connor
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- ISTE230, Fall 2024
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- PE04
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- Q1
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT title AS Title_of_Film, length AS Length_of_Film, LEFT(description,40)
+	FROM film
+	WHERE description LIKE '%fun%'
+	AND length <= 100
+	AND length >= 50
+	ORDER BY length DESC
+--------------
+
++---------------------+----------------+------------------------------------------+
+| Title_of_Film       | Length_of_Film | LEFT(description,40)                     |
++---------------------+----------------+------------------------------------------+
+| CLUELESS BUCKET     |             95 | A Taut Tale of a Car And a Pioneer who m |
+| ISLAND EXORCIST     |             84 | A Fanciful Panorama of a Technical Write |
+| ALONE TRIP          |             82 | A Fast-Paced Character Study of a Compos |
+| ANYTHING SAVANNAH   |             82 | A Epic Story of a Pastry Chef And a Woma |
+| SADDLE ANTITRUST    |             80 | A Stunning Epistle of a Feminist And a A |
+| ISHTAR ROCKETEER    |             79 | A Astounding Saga of a Dog And a Squirre |
+| BEDAZZLED MARRIED   |             73 | A Astounding Character Study of a Madman |
+| BORROWERS BEDAZZLED |             63 | A Brilliant Epistle of a Teacher And a S |
+| SENSE GREEK         |             54 | A Taut Saga of a Lumberjack And a Pastry |
+| BLUES INSTINCT      |             50 | A Insightful Documentary of a Boat And a |
++---------------------+----------------+------------------------------------------+
+10 rows in set (0.01 sec)
+
+--------------
+	
+-- Q2
+SELECT title AS Title_of_Film, length AS Length_of_Film, RIGHT(description,60)
+	FROM film
+	WHERE description LIKE '%Database%'
+	OR description LIKE '%California%'
+--------------
+
++-------------------------+----------------+--------------------------------------------------------------+
+| Title_of_Film           | Length_of_Film | RIGHT(description,60)                                        |
++-------------------------+----------------+--------------------------------------------------------------+
+| ACE GOLDFINGER          |             48 | istrator And a Explorer who must Find a Car in Ancient China |
+| ALABAMA DEVIL           |            114 |  Mad Scientist who must Outgun a Mad Scientist in A Jet Boat |
+| ALICE FANTASIA          |             94 |  Administrator who must Vanquish a Pioneer in Soviet Georgia |
+| AMERICAN CIRCUS         |            129 | onaut who must Face a Database Administrator in A Shark Tank |
+| AMISTAD MIDSUMMER       |             85 |  And a Crocodile who must Meet a Sumo Wrestler in California |
+| ANONYMOUS HUMAN         |            179 | ut who must Outrace a Database Administrator in A Shark Tank |
+| ANTITRUST TOMATOES      |            168 | t who must Succumb a Database Administrator in Ancient India |
+| ARMY FLINTSTONES        |            148 | trator And a Womanizer who must Battle a Waitress in Nigeria |
+| ARTIST COLDBLOODED      |            170 | a Robot And a Moose who must Challenge a Woman in California |
+| BALLROOM MOCKINGBIRD    |            173 | Composer And a Monkey who must Find a Feminist in California |
+| BIRDS PERDITION         |             61 |  a Womanizer And a Pioneer who must Face a Dog in California |
+| BOUND CHEAPER           |             98 |  And a Astronaut who must Challenge a Lumberjack in A Baloon |
+| BOWFINGER GABLES        |             72 | tress And a Composer who must Outgun a Dentist in California |
+| BUTCH PANTHER           |             67 | Database Administrator who must Face a Hunter in New Orleans |
+| CALIFORNIA BIRDS        |             75 | ot who must Battle a Database Administrator in Ancient India |
+
+.	.	.	.	.	.	.	.	.	.	.	.	.	.
+
+| TRAP GUYS               |            110 | must Challenge a Database Administrator in The Sahara Desert |
+| TREASURE COMMAND        |            102 | a Car And a Madman who must Discover a Pioneer in California |
+| TRUMAN CRAZY            |             92 |  a Boy who must Meet a Database Administrator in A Monastery |
+| VALENTINE VANISHING     |             48 | band And a Butler who must Reach a Pastry Chef in California |
+| VANISHED GARDEN         |            142 | irrel And a A Shark who must Kill a Lumberjack in California |
+| VIRGIN DAISY            |            179 | tist who must Reach a Database Administrator in A Shark Tank |
+| VIRTUAL SPOILERS        |            144 | And a Squirrel who must Discover a Student in Soviet Georgia |
+| VOLUME HOUSE            |            132 | e of a Dog And a Woman who must Meet a Dentist in California |
+| WARS PLUTO              |            128 | e Administrator who must Chase a Madman in The Sahara Desert |
+| WASTELAND DIVINE        |             85 | zer who must Fight a Database Administrator in Ancient China |
+| WEST LION               |            159 |  Challenge a Database Administrator in A Manhattan Penthouse |
+| WHALE BIKINI            |            109 | Administrator who must Kill a Feminist in A MySQL Convention |
+| YOUNG LANGUAGE          |            183 | trator who must Meet a Boy in The First Manned Space Station |
++-------------------------+----------------+--------------------------------------------------------------+
+115 rows in set (0.00 sec)
+
+--------------
+	
+-- Q3
+SELECT title AS Title_of_Film, length AS Length_of_Film, rating
+	FROM film
+	WHERE rating = 'G'
+	AND length <= 140
+	AND length >= 120
+--------------
+
++-------------------------+----------------+--------+
+| Title_of_Film           | Length_of_Film | rating |
++-------------------------+----------------+--------+
+| AFRICAN EGG             |            130 | G      |
+| ALAMO VIDEOTAPE         |            126 | G      |
+| BAREFOOT MANCHURIAN     |            129 | G      |
+| BEACH HEARTBREAKERS     |            122 | G      |
+| BREAKFAST GOLDFINGER    |            123 | G      |
+| CHISUM BEHAVIOR         |            124 | G      |
+| DAZED PUNK              |            120 | G      |
+| DOGMA FAMILY            |            122 | G      |
+| DUDE BLINDNESS          |            132 | G      |
+| EXTRAORDINARY CONQUERER |            122 | G      |
+| FANTASIA PARK           |            131 | G      |
+| FARGO GANDHI            |            130 | G      |
+| GOSFORD DONNIE          |            129 | G      |
+| GREASE YOUTH            |            135 | G      |
+| JAPANESE RUN            |            135 | G      |
+| JUMANJI BLADE           |            121 | G      |
+| LIBERTY MAGNIFICENT     |            138 | G      |
+| SAINTS BRIDE            |            125 | G      |
+| SHINING ROSES           |            125 | G      |
+| STRANGER STRANGERS      |            139 | G      |
+| TRAFFIC HOBBIT          |            139 | G      |
+| WARS PLUTO              |            128 | G      |
++-------------------------+----------------+--------+
+22 rows in set (0.00 sec)
+
+--------------
+	
+-- Q4
+SELECT title AS Title_of_Film, length AS Length_of_Film, rating
+	FROM film
+	WHERE title LIKE '%river%'
+	AND (rating = 'PG-13' OR rating = 'R')
+--------------
+
++---------------+----------------+--------+
+| Title_of_Film | Length_of_Film | rating |
++---------------+----------------+--------+
+| DRIVER ANNIE  |            159 | PG-13  |
+| GOLD RIVER    |            154 | R      |
+| RIVER OUTLAW  |            149 | PG-13  |
++---------------+----------------+--------+
+3 rows in set (0.00 sec)
+
+--------------
+	
+-- Q5
+SELECT title AS Title_of_Film, length AS Length_of_Film, release_year, rating
+	FROM film
+	WHERE release_year = '2006'
+	AND (rating = 'PG-13' OR rating = 'R')
+	AND length < 55
+--------------
+
++---------------------+----------------+--------------+--------+
+| Title_of_Film       | Length_of_Film | release_year | rating |
++---------------------+----------------+--------------+--------+
+| AIRPORT POLLOCK     |             54 |         2006 | R      |
+| CROSSING DIVORCE    |             50 |         2006 | R      |
+| DEEP CRUSADE        |             51 |         2006 | PG-13  |
+| ENGLISH BULWORTH    |             51 |         2006 | PG-13  |
+| GO PURPLE           |             54 |         2006 | R      |
+| GROSSE WONDERFUL    |             49 |         2006 | R      |
+| HALLOWEEN NUTS      |             47 |         2006 | PG-13  |
+| HAWK CHILL          |             47 |         2006 | PG-13  |
+| JUGGLER HARDLY      |             54 |         2006 | PG-13  |
+| KWAI HOMEWARD       |             46 |         2006 | PG-13  |
+| LABYRINTH LEAGUE    |             46 |         2006 | PG-13  |
+| MAGNIFICENT CHITTY  |             53 |         2006 | R      |
+| NATURAL STOCK       |             50 |         2006 | PG-13  |
+| NOTTING SPEAKEASY   |             48 |         2006 | PG-13  |
+| OCTOBER SUBMARINE   |             54 |         2006 | PG-13  |
+| PARADISE SABRINA    |             48 |         2006 | PG-13  |
+| RIDGEMONT SUBMARINE |             46 |         2006 | PG-13  |
+| SENSE GREEK         |             54 |         2006 | R      |
+| SMOKING BARBARELLA  |             50 |         2006 | PG-13  |
+| THIN SAGEBRUSH      |             53 |         2006 | PG-13  |
+| VALENTINE VANISHING |             48 |         2006 | PG-13  |
++---------------------+----------------+--------------+--------+
+21 rows in set (0.00 sec)
+
+--------------
+	
+-- Q6
+SELECT title AS Title_of_Film, replacement_cost AS Replacement_Cost, rating AS Film_Rating
+	FROM film
+	WHERE title NOT LIKE '_a%'
+	AND replacement_cost = 18.99
+	ORDER BY title DESC
+--------------
+
++----------------------+------------------+-------------+
+| Title_of_Film        | Replacement_Cost | Film_Rating |
++----------------------+------------------+-------------+
+| ZORRO ARK            |            18.99 | NC-17       |
+| WON DARES            |            18.99 | PG          |
+| TOURIST PELICAN      |            18.99 | PG-13       |
+| TITANIC BOONDOCK     |            18.99 | R           |
+| SMOOCHY CONTROL      |            18.99 | R           |
+| SEATTLE EXPECATIONS  |            18.99 | PG-13       |
+| PUNK DIVORCE         |            18.99 | PG          |
+| OUTFIELD MASSACRE    |            18.99 | NC-17       |
+| OTHERS SOUP          |            18.99 | PG          |
+| NONE SPIKING         |            18.99 | NC-17       |
+| MUPPET MILE          |            18.99 | PG          |
+| MENAGERIE RUSHMORE   |            18.99 | G           |
+| LOVELY JINGLE        |            18.99 | PG          |
+| LOUISIANA HARRY      |            18.99 | PG-13       |
+| LOSE INCH            |            18.99 | R           |
+| LEGEND JEDI          |            18.99 | PG          |
+| JUMPING WRATH        |            18.99 | NC-17       |
+| INCH JET             |            18.99 | NC-17       |
+| GHOSTBUSTERS ELF     |            18.99 | R           |
+| GHOST GROUNDHOG      |            18.99 | G           |
+| FLYING HOOK          |            18.99 | NC-17       |
+| FIRE WOLVES          |            18.99 | R           |
+| ENGLISH BULWORTH     |            18.99 | PG-13       |
+| DRIFTER COMMANDMENTS |            18.99 | PG-13       |
+| DREAM PICKUP         |            18.99 | PG          |
+| CYCLONE FAMILY       |            18.99 | PG          |
+| CITIZEN SHREK        |            18.99 | G           |
+| BREAKFAST GOLDFINGER |            18.99 | G           |
+| BLUES INSTINCT       |            18.99 | G           |
+| BIRCH ANTITRUST      |            18.99 | PG          |
+| ADAPTATION HOLES     |            18.99 | NC-17       |
++----------------------+------------------+-------------+
+31 rows in set (0.00 sec)
+
+--------------
+	
+-- Q7
+SELECT title AS Title_of_Film, LEFT(description, 55)
+	FROM film
+	WHERE description LIKE '%Frisbee%'
+	AND description LIKE '%Fanciful%'
+--------------
+
++------------------+---------------------------------------------------------+
+| Title_of_Film    | LEFT(description, 55)                                   |
++------------------+---------------------------------------------------------+
+| AFFAIR PREJUDICE | A Fanciful Documentary of a Frisbee And a Lumberjack wh |
+| STING PERSONAL   | A Fanciful Drama of a Frisbee And a Dog who must Fight  |
++------------------+---------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+--------------
+	
+-- Q8
+SELECT title AS Title_of_Film, rating, release_year, length
+	FROM film
+	WHERE (rating = 'PG-13' AND release_year = '2006' AND length < 60)
+	OR (rating = 'R' AND length < 55)
+	ORDER BY rating DESC
+--------------
+
++---------------------+--------+--------------+--------+
+| Title_of_Film       | rating | release_year | length |
++---------------------+--------+--------------+--------+
+| AIRPORT POLLOCK     | R      |         2006 |     54 |
+| CROSSING DIVORCE    | R      |         2006 |     50 |
+| GO PURPLE           | R      |         2006 |     54 |
+| GROSSE WONDERFUL    | R      |         2006 |     49 |
+| MAGNIFICENT CHITTY  | R      |         2006 |     53 |
+| SENSE GREEK         | R      |         2006 |     54 |
+| ALTER VICTORY       | PG-13  |         2006 |     57 |
+| DAUGHTER MADIGAN    | PG-13  |         2006 |     59 |
+| DEEP CRUSADE        | PG-13  |         2006 |     51 |
+| ENGLISH BULWORTH    | PG-13  |         2006 |     51 |
+| FANTASY TROOPERS    | PG-13  |         2006 |     58 |
+| HALLOWEEN NUTS      | PG-13  |         2006 |     47 |
+| HAWK CHILL          | PG-13  |         2006 |     47 |
+| JUGGLER HARDLY      | PG-13  |         2006 |     54 |
+| KWAI HOMEWARD       | PG-13  |         2006 |     46 |
+| LABYRINTH LEAGUE    | PG-13  |         2006 |     46 |
+| MATRIX SNOWMAN      | PG-13  |         2006 |     56 |
+| NATURAL STOCK       | PG-13  |         2006 |     50 |
+| NOTTING SPEAKEASY   | PG-13  |         2006 |     48 |
+| OCTOBER SUBMARINE   | PG-13  |         2006 |     54 |
+| PARADISE SABRINA    | PG-13  |         2006 |     48 |
+| RIDGEMONT SUBMARINE | PG-13  |         2006 |     46 |
+| SMOKING BARBARELLA  | PG-13  |         2006 |     50 |
+| THIN SAGEBRUSH      | PG-13  |         2006 |     53 |
+| VALENTINE VANISHING | PG-13  |         2006 |     48 |
+| VISION TORQUE       | PG-13  |         2006 |     59 |
+| WHISPERER GIANT     | PG-13  |         2006 |     59 |
++---------------------+--------+--------------+--------+
+27 rows in set (0.00 sec)
+
+--------------
+	
+-- Q9
+SELECT title AS Title_of_Film, length AS Length_Of_Film
+	FROM film
+	WHERE (title LIKE 'a%' OR title LIKE 'h%' OR title LIKE 'j%')
+	AND length < 70
+	ORDER BY title ASC
+--------------
+
++----------------------+----------------+
+| Title_of_Film        | Length_Of_Film |
++----------------------+----------------+
+| ACE GOLDFINGER       |             48 |
+| ADAPTATION HOLES     |             50 |
+| AIRPLANE SIERRA      |             62 |
+| AIRPORT POLLOCK      |             54 |
+| ALADDIN CALENDAR     |             63 |
+| ALIEN CENTER         |             46 |
+| ALTER VICTORY        |             57 |
+| ARABIA DOGMA         |             62 |
+| ARK RIDGEMONT        |             68 |
+| HALL CASSIDY         |             51 |
+| HALLOWEEN NUTS       |             47 |
+| HANGING DEEP         |             62 |
+| HANOVER GALAXY       |             47 |
+| HARPER DYING         |             52 |
+| HAWK CHILL           |             47 |
+| HEAD STRANGER        |             69 |
+| HEARTBREAKERS BRIGHT |             59 |
+| HEAVEN FREEDOM       |             48 |
+| HEAVENLY GUN         |             49 |
+| HOLLYWOOD ANONYMOUS  |             69 |
+| HOOK CHARIOTS        |             49 |
+| HUMAN GRAFFITI       |             68 |
+| HUNTING MUSKETEERS   |             65 |
+| HURRICANE AFFAIR     |             49 |
+| JEKYLL FROGMEN       |             58 |
+| JERSEY SASSY         |             60 |
+| JET NEIGHBORS        |             59 |
+| JUGGLER HARDLY       |             54 |
++----------------------+----------------+
+28 rows in set (0.00 sec)
+
+--------------
+	
+-- Q10
+SELECT now() AS today_unformatted, DATE_FORMAT(curdate(), '%d-%b-%Y') AS today_formatted
+--------------
+
++---------------------+-----------------+
+| today_unformatted   | today_formatted |
++---------------------+-----------------+
+| 2024-09-21 20:15:14 | 21-Sep-2024     |
++---------------------+-----------------+
+1 row in set (0.00 sec)
+
+--------------
+-- Q11
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+SELECT film_id, release_year, length, rating, rental_rate, rental_duration, LEFT(title, 33)
+	FROM film
+	WHERE release_year > '2005'
+	AND length < 100
+	AND rating = 'PG'
+	AND rental_rate >= 2
+	AND rental_duration >= 6
+	AND title NOT LIKE 'w%'
+	AND title NOT LIKE 't%'
+	ORDER BY title DESC
+--------------
+
++---------+--------------+--------+--------+-------------+-----------------+---------------------+
+| film_id | release_year | length | rating | rental_rate | rental_duration | LEFT(title, 33)     |
++---------+--------------+--------+--------+-------------+-----------------+---------------------+
+|     785 |         2006 |     80 | PG     |        4.99 |               6 | SHAWSHANK BUBBLE    |
+|     784 |         2006 |     47 | PG     |        2.99 |               7 | SHANGHAI TYCOON     |
+|     780 |         2006 |     98 | PG     |        4.99 |               7 | SENSIBILITY REAR    |
+|     776 |         2006 |     90 | PG     |        4.99 |               6 | SECRET GROUNDHOG    |
+|     679 |         2006 |     50 | PG     |        2.99 |               6 | PILOT HOOSIERS      |
+|     668 |         2006 |     80 | PG     |        4.99 |               7 | PEAK FOREVER        |
+|     664 |         2006 |     65 | PG     |        2.99 |               6 | PATRIOT ROMAN       |
+|     639 |         2006 |     92 | PG     |        4.99 |               7 | OPPOSITE NECKLACE   |
+|     611 |         2006 |     73 | PG     |        4.99 |               7 | MUSKETEERS WAIT     |
+|     603 |         2006 |     53 | PG     |        4.99 |               6 | MOVIE SHAKESPEARE   |
+|     485 |         2006 |     60 | PG     |        4.99 |               6 | JERSEY SASSY        |
+|     469 |         2006 |     46 | PG     |        4.99 |               7 | IRON MOON           |
+|     443 |         2006 |     49 | PG     |        2.99 |               6 | HURRICANE AFFAIR    |
+|     410 |         2006 |     48 | PG     |        2.99 |               7 | HEAVEN FREEDOM      |
+|     343 |         2006 |     94 | PG     |        2.99 |               6 | FULL FLATLINERS     |
+|     338 |         2006 |     51 | PG     |        4.99 |               6 | FRISCO FORREST      |
+|     305 |         2006 |     91 | PG     |        2.99 |               6 | FATAL HAUNTED       |
+|     144 |         2006 |     61 | PG     |        4.99 |               7 | CHINATOWN GLADIATOR |
+|      78 |         2006 |     85 | PG     |        2.99 |               7 | BLACKOUT PRIVATE    |
+|      72 |         2006 |     93 | PG     |        2.99 |               6 | BILL OTHERS         |
++---------+--------------+--------+--------+-------------+-----------------+---------------------+
+20 rows in set (0.00 sec)
+
+mysql> NOTEE

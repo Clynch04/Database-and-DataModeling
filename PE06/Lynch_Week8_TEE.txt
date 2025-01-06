@@ -1,0 +1,109 @@
+mysql> SOURCE C:\ISTE230\PE\PE06\Lynch_Week8.sql
+--------------
+-- Lynch, Connor
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- ISTE230, Fall 2024
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+-- PE06
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+DROP DATABASE IF EXISTS PE06
+--------------
+
+Query OK, 5 rows affected (0.03 sec)
+
+--------------
+CREATE DATABASE PE06
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+--------------
+CREATE TABLE Customer(
+	CustID		varchar(20) NOT NULL PRIMARY KEY,
+	CustName	varchar(30) NOT NULL,
+	CustContact	varchar(50) NOT NULL
+	)
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+	
+CREATE TABLE Product(
+	ProductID		varchar(20) NOT NULL PRIMARY KEY,
+	ProdDescription	varchar(50) NOT NULL,
+	UnitPrice	DECIMAL(9,2) NOT NULL
+	)
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+CREATE TABLE PO_Detail(
+	PO		varchar(20) NOT NULL PRIMARY KEY,
+	CustID		varchar(20) NOT NULL,
+	ProductID	varchar(20) NOT NULL,
+	Quantity	SMALLINT UNSIGNED NOT NULL,
+	CONSTRAINT PODetail_Customer_CustID_FK FOREIGN KEY(CustID) REFERENCES Customer(CustID),
+	CONSTRAINT PODetail_Product_ProductID_FK FOREIGN KEY(ProductID) REFERENCES Product(ProductID)
+	)
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+	
+CREATE TABLE PO(
+	PO		varchar(20) NOT NULL PRIMARY KEY,
+	OrderDate	DATE NOT NULL,
+	BillToAddress	varchar(75) NOT NULL,
+	ShipToAddress	varchar(75) NOT NULL,
+	CONSTRAINT PO_PODetail_PO_FK FOREIGN KEY(PO) REFERENCES PO_Detail(PO)
+	)
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+	
+CREATE TABLE Paid_PO(
+	PO		varchar(20) NOT NULL,
+	Date		DATE NOT NULL,
+	Amount		DECIMAL(9,2) NOT NULL,
+	CONSTRAINT PaidPO_PODetail_PO_FK FOREIGN KEY(PO) REFERENCES PO_Detail(PO),
+	CONSTRAINT PO_Date_PK PRIMARY KEY(PO, Date)
+	)
+--------------
+
+Query OK, 0 rows affected (0.01 sec)
+
+--------------
+	
+SHOW TABLES
+--------------
+
++----------------+
+| Tables_in_pe06 |
++----------------+
+| customer       |
+| paid_po        |
+| po             |
+| po_detail      |
+| product        |
++----------------+
+5 rows in set (0.00 sec)
+
+mysql> NOTEE

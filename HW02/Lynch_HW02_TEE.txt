@@ -1,0 +1,65 @@
+--Lynch, Connor
+--ISTE230, Fall 2024
+
+mysql> SOURCE C:\ISTE230\HW\Lynch_HW02_script.sql
+--------------
+DROP DATABASE IF EXISTS HW02
+--------------
+
+Query OK, 1 row affected (0.01 sec)
+
+--------------
+CREATE DATABASE HW02
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+Database changed
+--------------
+CREATE TABLE item(
+	itemID		varchar(25) NOT NULL PRIMARY KEY,
+	itemName	varchar(25) NOT NULL,
+	name		varchar(25) NOT NULL,
+	street		varchar(25) NOT NULL,
+	city		varchar(25) NOT NULL,
+	state		char(2) NOT NULL,
+	zipcode		varchar(10) NOT NULL,
+	cost		DECIMAL(5,2) DEFAULT 0.0,
+	retailPrice	DECIMAL(6,2) NOT NULL,
+	notes		varchar(255),
+	longDescription	MEDIUMTEXT,
+	returnable	BOOL,
+	perishable	TINYINT,
+	shelfQty	SMALLINT UNSIGNED
+	
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8
+--------------
+
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> DESC item;
+--------------
+DESC item
+--------------
+
++-----------------+-------------------+------+-----+---------+-------+
+| Field           | Type              | Null | Key | Default | Extra |
++-----------------+-------------------+------+-----+---------+-------+
+| itemID          | varchar(25)       | NO   | PRI | NULL    |       |
+| itemName        | varchar(25)       | NO   |     | NULL    |       |
+| name            | varchar(25)       | NO   |     | NULL    |       |
+| street          | varchar(25)       | NO   |     | NULL    |       |
+| city            | varchar(25)       | NO   |     | NULL    |       |
+| state           | char(2)           | NO   |     | NULL    |       |
+| zipcode         | varchar(10)       | NO   |     | NULL    |       |
+| cost            | decimal(5,2)      | YES  |     | 0.00    |       |
+| retailPrice     | decimal(6,2)      | NO   |     | NULL    |       |
+| notes           | varchar(255)      | YES  |     | NULL    |       |
+| longDescription | mediumtext        | YES  |     | NULL    |       |
+| returnable      | tinyint(1)        | YES  |     | NULL    |       |
+| perishable      | tinyint           | YES  |     | NULL    |       |
+| shelfQty        | smallint unsigned | YES  |     | NULL    |       |
++-----------------+-------------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+mysql> NOTEE
